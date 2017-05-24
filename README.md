@@ -17,10 +17,12 @@ allprojects {
 <br />
 2. second,edit your module build.gradle<br />
 ```Groovy
+
 dependencies {
     ...
     compile 'com.github.XinYiWorld:FormValidator:1.0.0'
 }
+
 ```
 
 ## Use (使用指南)
