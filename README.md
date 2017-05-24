@@ -81,7 +81,7 @@ dependencies {
 ```
  
 ## Thanks (特别感谢)
-* [AVLoadingIndicatorView](https://github.com/81813780/AVLoadingIndicatorView)
+* [AValidations](https://github.com/xiaob/AValidations)
 
 ## Contact me (联系我)
 * QQ邮箱:1349308479@qq.com
