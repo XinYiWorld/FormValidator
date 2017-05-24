@@ -1,0 +1,77 @@
+apply plugin: 'com.android.application'
+
+//// 这里添加下面两行代码。
+apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: 'com.jfrog.bintray'
+
+group="com.github.XinYiWorld"
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.1"
+
+    dataBinding{
+        enabled true
+    }
+
+    defaultConfig {
+        applicationId "com.btsj.hire"
+        minSdkVersion 14
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+
+        ndk {
+            abiFilters"armeabi-v7a", "x86"
+        }
+    }
+    buildTypes {
+        debug {
+            minifyEnabled false
+            buildConfigField "boolean", "LOG_DEBUG", "true"
+        }
+
+        release {
+            minifyEnabled false
+            buildConfigField("boolean", "LOG_DEBUG", "false")
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    compile 'com.github.XinYiWorld:CZBaseDevLibary:1.0.81'
+    compile project(':FormValidator')
+}
+
+// 指定编码
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}
+
+// 打包源码
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier = 'sources'
+}
+
+task javadoc(type: Javadoc) {
+    failOnError  false
+    source = android.sourceSets.main.java.sourceFiles
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+    classpath += configurations.compile
+}
+
+// 制作文档(Javadoc)
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+artifacts {
+    archives sourcesJar
+    archives javadocJar
+}

@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">FormValidatorMain</string>
+    <string name="warn_input_phone_illegal">请输入正确的手机号</string>
+    <string name="warn_input_email_illegal">请输入正确的邮箱号</string>
+    <string name="warn_input_phone_min_length">密码最少输入6位</string>
+    <string name="warn_input_phone_max_length">密码最多输入12位</string>
+</resources>
